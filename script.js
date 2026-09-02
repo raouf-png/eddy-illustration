@@ -12,7 +12,15 @@
   var lt = document.querySelector('.colo__b .lang');
   if (lt) {
     lt.href = lt.getAttribute('href') + window.location.search + window.location.hash;
-    lt.addEventListener('click', function () { try { localStorage.setItem('lang', lt.getAttribute('data-lang')); } catch (e) {} });
+    lt.addEventListener('click', function (e) {
+      try { localStorage.setItem('lang', lt.getAttribute('data-lang')); } catch (er) {}
+      if (reduce) { return; }
+      e.preventDefault(); e.stopPropagation();
+      lt.classList.add('is-switching');
+      var to = lt.href;
+      window.setTimeout(function () { document.documentElement.classList.add('is-leaving'); }, 260);
+      window.setTimeout(function () { window.location.href = to; }, 520);
+    }, true);
   }
 
   /* ----------------------------------------------- l'entree de page, et la sortie vers la suivante */
