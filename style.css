@@ -257,8 +257,8 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
  font-weight:400;font-size:13px;line-height:1.6}
 .colo b{font-weight:700;font-size:15px;margin-bottom:4px}
 .colo a:hover{text-decoration:underline;text-underline-offset:3px}
-.colo__b{border-top:1px solid var(--hair);padding:10px var(--gut);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
- font-weight:400;font-size:var(--t5)}
+.colo__b{border-top:1px solid var(--hair);padding:10px var(--gut);display:grid;grid-template-columns:auto auto auto auto;justify-content:space-between;align-items:center;gap:16px;
+ font-weight:400;font-size:var(--t5);white-space:nowrap}
 .colo__b>span,.colo__b>a:not(.lsw){opacity:.7}
 .colo__b a:hover{text-decoration:underline;text-underline-offset:3px}
 
@@ -486,7 +486,8 @@ a.mail:hover{opacity:.6}
  .go{padding:12px 0 10px;margin-top:2px}
  .colo a{padding:5px 0}
  .colo>div{padding:18px var(--gut) 20px;gap:4px}
- .colo__b{gap:10px 18px;padding:14px var(--gut)}
+ .colo__b{grid-template-columns:1fr auto;gap:6px 18px;padding:14px var(--gut);white-space:normal}
+ .colo__b>*:nth-child(2n){justify-self:end;text-align:right}
  .colo__b a,.colo__b span{padding:11px 0}
  .colo__b .lsw{padding:0}
  .slist--team a{padding:8px 0 4px}
