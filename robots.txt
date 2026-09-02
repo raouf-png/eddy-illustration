@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://raouf-png.github.io/eddy-illustration/sitemap.xml
