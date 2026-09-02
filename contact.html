@@ -47,9 +47,9 @@
      <option value="clement-soulmagnon">Clément Soulmagnon</option>
      <option value="marius-segond">Marius Segond</option>
     </select></label>
-   <label class="fld"><span class="mi">Votre nom</span><input type="text" name="nom" id="f-nom" autocomplete="name"></label>
-   <label class="fld fld--full"><span class="mi">Votre courriel</span><input type="email" name="courriel" id="f-mail" autocomplete="email" required></label>
-   <label class="fld fld--full"><span class="mi">Votre message</span><textarea name="message" id="f-msg" rows="6" required></textarea></label>
+   <label class="fld"><span class="mi">Votre nom</span><input type="text" name="nom" id="f-nom" autocomplete="name" placeholder="Prénom et nom"></label>
+   <label class="fld fld--full"><span class="mi">Votre courriel</span><input type="email" name="courriel" id="f-mail" autocomplete="email" required placeholder="vous@exemple.fr"></label>
+   <label class="fld fld--full"><span class="mi">Votre message</span><textarea name="message" id="f-msg" rows="6" required placeholder="Votre demande, en quelques lignes."></textarea></label>
    <div class="fld--full oform__b"><button type="submit" class="btn">Envoyer <svg class="env" viewBox="0 0 22 16" width="22" height="16" aria-hidden="true"><rect class="env__b" x="1" y="1" width="20" height="14" rx="1.5"/><path class="env__f" d="M1 1.5 L11 9.5 L21 1.5"/><path class="env__o" d="M1 1.5 L11 -5.5 L21 1.5 Z"/><path class="env__l" d="M1 14.5 L8 8.6 M21 14.5 L14 8.6"/><circle class="env__s" cx="11" cy="9.5" r="1.9"/></svg></button><span class="mi" id="f-note"></span></div>
   </form>
  </section>
