@@ -19,7 +19,10 @@
     if (root.lang === to) { return; }
     var pairs = I18N.map(function (p) { return to === 'en' ? p : [p[1], p[0]]; });
     pairs.sort(function (a, b) { return b[0].length - a[0].length; });
-    var res = pairs.map(function (p) { return [new RegExp('(^|[^\\p{L}])' + esc(p[0]) + '(?=[^\\p{L}]|$)', 'gu'), p[1]]; });
+    var res = pairs.map(function (p) {
+      var k = p[0], sb = /^\p{L}/u.test(k) ? '(^|[^\\p{L}])' : '()', eb = /\p{L}$/u.test(k) ? '(?=[^\\p{L}]|$)' : '';
+      return [new RegExp(sb + esc(k) + eb, 'gu'), p[1]];
+    });
     function tr(t) {
       var o = t;
       res.forEach(function (r) { if (r[0].test(t)) { t = t.replace(r[0], function (m, pre) { return pre + r[1]; }); } r[0].lastIndex = 0; });
