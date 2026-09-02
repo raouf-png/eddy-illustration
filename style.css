@@ -486,9 +486,11 @@ a.mail:hover{opacity:.6}
  .go{padding:12px 0 10px;margin-top:2px}
  .colo a{padding:5px 0}
  .colo>div{padding:18px var(--gut) 20px;gap:4px}
- .colo__b{grid-template-columns:1fr auto;gap:6px 18px;padding:14px var(--gut);white-space:normal}
- .colo__b>*{justify-self:start}
- .colo__b>*:nth-child(2n){justify-self:end;text-align:right}
+ /* les quatre sur une seule ligne, meme au telephone : le texte se resserre */
+ .colo__b{grid-template-columns:auto auto auto auto;gap:8px;padding:12px var(--gut);white-space:nowrap;font-size:clamp(8.5px,2.55vw,12px)}
+ .colo__b a,.colo__b span{padding:8px 0}
+ .colo__b .lsw{font-size:8px}
+ .colo__b .lsw__o{padding:5px 6px 4px;min-width:24px}
  .colo__b a,.colo__b span{padding:11px 0}
  .colo__b .lsw{padding:0}
  .slist--team a{padding:8px 0 4px}
