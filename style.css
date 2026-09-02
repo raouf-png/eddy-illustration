@@ -62,18 +62,8 @@ html:not(.js) .bar__n a.on{text-decoration:underline;text-underline-offset:4px;t
  transform-origin:left;will-change:transform,width;transition:transform .38s var(--ease),width .38s var(--ease),opacity .25s}
 /* la page s'efface en partant et arrive par le bas ; la barre reste en place */
 .js main,.js .colo,.js .colo__b{transition:opacity .28s var(--ease),transform .34s var(--ease)}
-html.js.is-entering:not(.is-card) main,html.js.is-entering:not(.is-card) .colo,html.js.is-entering:not(.is-card) .colo__b{opacity:0;transform:translateY(14px)}
+html.js.is-entering main,html.js.is-entering .colo,html.js.is-entering .colo__b{opacity:0;transform:translateY(14px)}
 html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opacity:0;transform:translateY(-10px)}
-/* LA TRANSITION SIGNATURE : une carte est tiree du bas de l'ecran, dans la couleur de la destination
-   (l'aplat de l'artiste, sinon l'encre), elle couvre la page sous la barre ; la page suivante
-   s'ouvre avec la carte en place et la carte s'envole par le haut */
-.cover{position:fixed;left:0;right:0;top:0;height:100dvh;z-index:45;background:var(--cardc,var(--ink));
- border-radius:16px 16px 0 0;box-shadow:0 -18px 44px -14px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.18);
- transform:translateY(103%);pointer-events:none;will-change:transform}
-html.is-card-in .cover{transform:none;transition:transform .4s cubic-bezier(.2,.86,.28,1)}
-html.is-card .cover{transform:none}
-html.is-card.is-card-out .cover{transform:translateY(-103%);transition:transform .56s cubic-bezier(.3,.8,.3,1)}
-html:not(.js) .cover{display:none}
 /* l'interrupteur de langue : le bloc noir couvre la langue en cours, glisse vers l'autre au clic */
 .lsw{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);opacity:1;width:max-content;justify-self:start;
  font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;line-height:1;overflow:hidden;vertical-align:middle}
@@ -384,11 +374,12 @@ a.mail:hover{opacity:.6}
 /* ------------------------------------------------------ 8b. Le studio, feuille ouverte */
 .sheetp{padding:0 var(--gut)}
 .sheetp__h{padding:34px 0 26px}
-.halves{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:center;padding:0 0 var(--s7)}
+.halves{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:start;padding:0 0 var(--s7)}
 .halves__im{background:var(--c,#eee);aspect-ratio:1.15;display:flex;align-items:center;justify-content:center;padding:9%}
 .halves__im img{max-width:100%;max-height:100%;width:auto;height:auto;box-shadow:0 18px 44px rgba(0,0,0,.22)}
-.halves__t{display:flex;flex-direction:column;gap:18px;max-width:40ch;justify-self:end;padding-right:var(--gut)}
-.halves__t .def{font-weight:700;font-size:clamp(22px,2.4vw,34px);line-height:1.22;letter-spacing:-.025em}
+.halves__t{display:flex;flex-direction:column;gap:18px;max-width:600px;justify-self:start;padding:6px var(--gut) 0 0}
+.halves__t .def{font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance}
+.halves__p{font-weight:400;font-size:17px;line-height:1.65;max-width:52ch;text-wrap:pretty}
 .halves__t .def .ph{font-weight:400}
 .srow{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--s6);padding:44px 0;border-top:1px solid var(--hair)}
 .srow--last{border-bottom:1px solid var(--hair);margin-bottom:var(--s7)}
