@@ -513,8 +513,8 @@ a.mail:hover{opacity:.6}
  .bar__u{display:block;top:0;bottom:0;height:auto;background:var(--ink);z-index:0;transition:transform .36s var(--ease),width .36s var(--ease),opacity .2s}
  .home .bar:not(.is-solid) .bar__n{background:transparent;border-top-color:transparent}
  .home .bar:not(.is-solid) .bar__n a{color:inherit;opacity:.75;border-left-color:transparent}
- .home .bar:not(.is-solid) .bar__n a.on{opacity:1;text-decoration:none;color:var(--fgi)}
- .home .bar:not(.is-solid) .bar__u{background:currentColor}
+ .home .bar:not(.is-solid) .bar__n a.on{opacity:1;text-decoration:none;color:inherit}
+ .home .bar:not(.is-solid) .bar__u{background:transparent;box-shadow:inset 0 0 0 1px currentColor}
  .hero{min-height:0}
  .hero__f{padding:calc(var(--chrome) + 3vh) 7vw 3vh}
  .hero__b{flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:40px}
