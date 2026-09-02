@@ -504,16 +504,13 @@ a.mail:hover{opacity:.6}
  .lead{font-size:15px}
  .wk__c b{font-size:16px}
  .cap__t{font-size:15px}
- .bar{flex-wrap:wrap;padding:12px var(--gut) 0;gap:0}
- .bar__w{padding-bottom:10px}
- .bar__n{flex:1 0 100%;margin:0 calc(var(--gut)*-1);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:1px;
-  background:var(--hair);border-top:1px solid var(--hair)}
- .bar__n{background:var(--paper);border-top:1px solid var(--hair);gap:0}
- .bar__n a{position:relative;z-index:1;background:transparent;padding:11px 6px;text-align:center;opacity:1;color:rgba(13,13,13,.62);font-size:13px;transition:color .3s var(--ease)}
- .bar__n a+a{border-left:1px solid var(--hair)}
- .bar__n a.on{color:var(--paper);text-decoration:none}
- /* le bloc noir glisse d'une entree a l'autre, comme l'interrupteur de langue */
- .bar__u{display:block;top:0;bottom:0;height:auto;background:var(--ink);z-index:0;transition:transform .28s var(--ease),width .28s var(--ease),opacity .2s}
+ /* le menu, comme a l'ecran : le mot-marque, les cinq mots dessous, le trait sous l'entree en cours */
+ .bar{flex-wrap:wrap;padding:12px var(--gut) 10px;gap:4px 0}
+ .bar__w{padding-bottom:4px}
+ .bar__n{flex:1 0 100%;display:flex;justify-content:space-between;gap:8px;margin:0;background:transparent;border-top:0}
+ .bar__n a{padding:8px 0 6px;font-size:12.5px;letter-spacing:.04em;opacity:.55;background:transparent;color:inherit}
+ .bar__n a.on{opacity:1}
+ .bar__u{bottom:4px}
  .home .bar{position:sticky;background:var(--paper);border-bottom-color:var(--ink);color:var(--ink)}
  .home .hero{height:calc(100dvh - var(--chrome))}
  .home .hero__f{padding:3vh 7vw 3vh}
