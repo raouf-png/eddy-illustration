@@ -62,8 +62,18 @@ html:not(.js) .bar__n a.on{text-decoration:underline;text-underline-offset:4px;t
  transform-origin:left;will-change:transform,width;transition:transform .38s var(--ease),width .38s var(--ease),opacity .25s}
 /* la page s'efface en partant et arrive par le bas ; la barre reste en place */
 .js main,.js .colo,.js .colo__b{transition:opacity .28s var(--ease),transform .34s var(--ease)}
-html.js.is-entering main,html.js.is-entering .colo,html.js.is-entering .colo__b{opacity:0;transform:translateY(14px)}
+html.js.is-entering:not(.is-card) main,html.js.is-entering:not(.is-card) .colo,html.js.is-entering:not(.is-card) .colo__b{opacity:0;transform:translateY(14px)}
 html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opacity:0;transform:translateY(-10px)}
+/* LA TRANSITION SIGNATURE : une carte est tiree du bas de l'ecran, dans la couleur de la destination
+   (l'aplat de l'artiste, sinon l'encre), elle couvre la page sous la barre ; la page suivante
+   s'ouvre avec la carte en place et la carte s'envole par le haut */
+.cover{position:fixed;left:0;right:0;top:0;height:100dvh;z-index:45;background:var(--cardc,var(--ink));
+ border-radius:16px 16px 0 0;box-shadow:0 -18px 44px -14px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.18);
+ transform:translateY(103%);pointer-events:none;will-change:transform}
+html.is-card-in .cover{transform:none;transition:transform .4s cubic-bezier(.2,.86,.28,1)}
+html.is-card .cover{transform:none}
+html.is-card.is-card-out .cover{transform:translateY(-103%);transition:transform .56s cubic-bezier(.3,.8,.3,1)}
+html:not(.js) .cover{display:none}
 /* l'interrupteur de langue : le bloc noir couvre la langue en cours, glisse vers l'autre au clic */
 .lsw{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);opacity:1;width:max-content;justify-self:start;
  font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;line-height:1;overflow:hidden;vertical-align:middle}
@@ -143,7 +153,7 @@ html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opa
 .une__t p{font-weight:400;font-size:14px;line-height:1.7;max-width:40ch}
 .une__ph{width:88px;height:88px;object-fit:cover;margin-bottom:6px}
 .une__ph--void{display:flex;align-items:center;justify-content:center;background:var(--hair2);font-size:12px}
-.une__w{display:grid;grid-template-columns:repeat(3,1fr);align-content:start;background:var(--paper)}
+.une__w{display:grid;grid-template-columns:repeat(3,1fr);align-content:center;background:var(--paper)}
 .une__w .flat{padding:8%;aspect-ratio:1;min-height:0;border-left:1px solid var(--hair)}
 .une__w .flat:first-child{border-left:0}
 .une__w .flat img{max-width:100%;max-height:100%}
@@ -299,7 +309,8 @@ a.soc__a:hover .ico path.gl{fill:var(--paper)}
 .oform .fld input,.oform .fld select,.oform .fld textarea{border-bottom:1px solid var(--ink);padding:12px 0 12px;font-size:16px}
 .oform .fld input::placeholder,.oform .fld textarea::placeholder{color:var(--ink);opacity:.35;font-style:italic}
 .oform .fld input:focus,.oform .fld select:focus,.oform .fld textarea:focus{border-bottom-width:2px;padding-bottom:11px}
-.oform .fld textarea{min-height:150px}
+/* le message : une ligne, le texte sur le filet comme les autres champs, la boite grandit en ecrivant */
+.oform .fld textarea{min-height:0;height:auto;resize:none;overflow:hidden;field-sizing:content}
 .oform__b{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px}
 .slist--soc li{font-size:18px;letter-spacing:-.01em;padding:10px 0}
 .slist--soc a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -467,6 +478,43 @@ a.mail:hover{opacity:.6}
 .lcard.is-drag{transition:none;animation:none!important;cursor:grabbing;z-index:60;
  transform:translate3d(var(--x,0),var(--y,0),0) rotate(var(--r,0deg)) scale(1.06)}
 
+/* ------------------------------------------------------- 8c. Les projets, la grille */
+/* modele Kiblind : deux colonnes de grands visuels, le titre en gras puis les rubriques a la suite ;
+   le squelette met un aplat a la place du visuel */
+.rubs--f{margin:26px 0 30px}
+.rubs--f .rub[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px 44px;padding-bottom:20px}
+.pj{display:block;min-width:0}
+.pj__im{display:block;aspect-ratio:3/2;background:var(--c,#eee);overflow:hidden}
+.pj__im img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.pj:hover .pj__im img{transform:scale(1.025)}
+.pj__t{display:block;margin-top:14px;font-weight:400;font-size:17px;line-height:1.45;letter-spacing:-.01em;text-wrap:pretty}
+.pj__t b{font-weight:700}
+.pj:hover .pj__t b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+/* page Artistes : la bande des noms descend jusqu'au filet noir du roster, sans blanc entre les deux */
+.roster .deck--page .caps{height:86px}
+.roster #roster{padding-top:0}
+/* la loupe : une piece pressee s'ouvre en grand sur l'aplat de son artiste ; la croix, blanche,
+   vit dans la bande du haut, jamais sur l'image ; clic a cote ou Echap pour fermer */
+[data-zoom]{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:100;background:var(--c,#0d0d0d);padding:76px 6vw 40px;
+ display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s var(--ease);cursor:zoom-out}
+.lb[hidden]{display:none}
+.lb.is-on{opacity:1}
+.lb__f{max-width:100%;max-height:100%;display:flex;align-items:center;justify-content:center;margin:0}
+.lb__f img{max-width:100%;max-height:calc(100dvh - 116px);width:auto;height:auto;cursor:default;
+ box-shadow:0 30px 80px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.12)}
+.lb__x{position:absolute;top:16px;right:16px;width:44px;height:44px;background:var(--paper);color:var(--ink);
+ border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,color .2s}
+.lb__x svg{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
+.lb__x:hover,.lb__x:focus-visible{background:var(--ink);color:var(--paper)}
+/* les deux pages legales dans le pied, et les conditions en feuille ouverte */
+.srow p+.slist{margin-top:22px}
+.terms .srow{padding:36px 0}
+.terms .srow p{max-width:70ch}
+.terms .srow p+p{margin-top:12px}
+.terms .srow a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
 /* --------------------------------------------------------------- 10. Ecrans */
 @media(max-width:1100px){
  :root{--gut:18px}
@@ -498,12 +546,17 @@ a.mail:hover{opacity:.6}
  .colo a{padding:5px 0}
  .colo>div{padding:18px var(--gut) 20px;gap:4px}
  /* les quatre sur une seule ligne, meme au telephone : le texte se resserre */
- .colo__b{grid-template-columns:auto auto auto auto;gap:8px;padding:12px var(--gut);white-space:nowrap;font-size:clamp(8.5px,2.55vw,12px)}
+ .colo__b{grid-template-columns:auto auto auto auto;gap:8px;padding:12px var(--gut);white-space:nowrap;font-size:clamp(8.5px,2.4vw,12px)}
  .colo__b a,.colo__b span{padding:8px 0}
  .colo__b .lsw{font-size:8px}
  .colo__b .lsw__o{padding:5px 6px 4px;min-width:24px}
  .colo__b a,.colo__b span{padding:11px 0}
  .colo__b .lsw{padding:0}
+ .pgrid{grid-template-columns:1fr;gap:34px}
+ .lb{padding:72px 12px 24px}
+ .lb__x{top:14px;right:14px}
+ .roster #roster{padding-top:22px}
+ .pj__t{font-size:16px}
  .slist--team a{padding:8px 0 4px}
  .names--col .nm{padding:13px 16px;min-height:44px}
  .rub{padding:10px 12px 9px}
