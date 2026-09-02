@@ -356,7 +356,7 @@ a.mail:hover{opacity:.6}
 .halves{display:grid;grid-template-columns:1fr 1fr;gap:var(--s7);align-items:center;padding:0 0 var(--s7)}
 .halves__im{background:var(--c,#eee);aspect-ratio:1.15;display:flex;align-items:center;justify-content:center;padding:9%}
 .halves__im img{max-width:100%;max-height:100%;width:auto;height:auto;box-shadow:0 18px 44px rgba(0,0,0,.22)}
-.halves__t{display:flex;flex-direction:column;gap:18px;max-width:34ch}
+.halves__t{display:flex;flex-direction:column;gap:18px;max-width:40ch;justify-self:end;padding-right:var(--gut)}
 .halves__t .def{font-weight:700;font-size:clamp(22px,2.4vw,34px);line-height:1.22;letter-spacing:-.025em}
 .halves__t .def .ph{font-weight:400}
 .srow{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--s6);padding:44px 0;border-top:1px solid var(--hair)}
@@ -475,11 +475,13 @@ a.mail:hover{opacity:.6}
  /* au doigt : 44 px de haut pour tout ce qui se touche, 11,5 px minimum pour ce qui se lit */
  .bar__w{padding:6px 0}
  .go{padding:12px 0 10px;margin-top:2px}
- .colo a{padding:9px 0}
+ .colo a{padding:5px 0}
+ .colo>div{padding:18px var(--gut) 20px;gap:4px}
  .colo__b{gap:10px 18px;padding:14px var(--gut)}
  .colo__b a,.colo__b span{padding:11px 0}
  .colo__b .lsw{padding:0}
- .lsw__o{padding:13px 14px 12px}
+ .lsw{font-size:9px;letter-spacing:.12em}
+ .lsw__o{padding:13px 16px 12px}
  .slist--team a{padding:8px 0 4px}
  .names--col .nm{padding:13px 16px;min-height:44px}
  .rub{padding:10px 12px 9px}
@@ -495,12 +497,16 @@ a.mail:hover{opacity:.6}
  .bar__w{padding-bottom:10px}
  .bar__n{flex:1 0 100%;margin:0 calc(var(--gut)*-1);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:1px;
   background:var(--hair);border-top:1px solid var(--hair)}
- .bar__n a{background:var(--paper);padding:11px 6px;text-align:center;opacity:.6;font-size:13px}
- .bar__n a.on{opacity:1;background:var(--ink);color:var(--paper);text-decoration:none}
- .bar__u{display:none}
+ .bar__n{background:var(--paper);border-top:1px solid var(--hair);gap:0}
+ .bar__n a{position:relative;z-index:1;background:transparent;padding:11px 6px;text-align:center;opacity:1;color:rgba(13,13,13,.62);font-size:13px;transition:color .3s var(--ease)}
+ .bar__n a+a{border-left:1px solid var(--hair)}
+ .bar__n a.on{color:var(--paper);text-decoration:none}
+ /* le bloc noir glisse d'une entree a l'autre, comme l'interrupteur de langue */
+ .bar__u{display:block;top:0;bottom:0;height:auto;background:var(--ink);z-index:0;transition:transform .36s var(--ease),width .36s var(--ease),opacity .2s}
  .home .bar:not(.is-solid) .bar__n{background:transparent;border-top-color:transparent}
- .home .bar:not(.is-solid) .bar__n a{background:transparent;color:inherit;opacity:.75}
- .home .bar:not(.is-solid) .bar__n a.on{opacity:1;text-decoration:underline;text-underline-offset:4px}
+ .home .bar:not(.is-solid) .bar__n a{color:inherit;opacity:.75;border-left-color:transparent}
+ .home .bar:not(.is-solid) .bar__n a.on{opacity:1;text-decoration:underline;text-underline-offset:4px;color:inherit}
+ .home .bar:not(.is-solid) .bar__u{opacity:0}
  .hero{min-height:0}
  .hero__f{padding:calc(var(--chrome) + 3vh) 7vw 3vh}
  .hero__b{flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:40px}
@@ -511,6 +517,7 @@ a.mail:hover{opacity:.6}
  .wk__im{aspect-ratio:4/3}
  .une__w{grid-template-columns:repeat(3,1fr)}
  .deck--page{height:calc(100dvh - var(--chrome) - 120px);min-height:360px}
+ .deck__vp{-webkit-mask-image:none;mask-image:none}
  .deck--home{height:min(56vh,520px);min-height:340px;flex:none}
  .caps{height:56px}
  .names--col{grid-template-columns:1fr}
