@@ -31,7 +31,7 @@
       var delay = 240;
       if (a.closest('.bar__n') && S.moveU) {
         [].forEach.call(a.parentNode.querySelectorAll('a'), function (o) { o.classList.toggle('on', o === a); });
-        S.moveU(a); delay = 340;
+        S.moveU(a); delay = 300;
       }
       root.classList.add('is-leaving');
       window.setTimeout(function () { window.location.href = href; }, delay);
@@ -81,7 +81,7 @@
     window.addEventListener('load', function () {
       root.style.setProperty('--chrome', (document.getElementById('bar') ? document.getElementById('bar').offsetHeight : 0) + 'px');
       if (S.deck) { S.deck.relayout(); }
-      if (S.moveU) { S.moveU(S.onLink); }
+      if (S.moveU) { S.moveU(S.onLink, true); }
     });
     window.addEventListener('popstate', function () { window.location.reload(); });
   }
@@ -145,12 +145,14 @@
       var u = nav.querySelector('.bar__u');
       if (!u) { u = document.createElement('span'); u.className = 'bar__u'; nav.appendChild(u); }
       S.onLink = nav.querySelector('a.on');
-      S.moveU = function (el) {
+      S.moveU = function (el, instant) {
         if (!el) { u.style.opacity = '0'; return; }
         var r = el.getBoundingClientRect(), nr = nav.getBoundingClientRect();
+        if (instant) { u.style.transition = 'none'; }
         u.style.opacity = '1'; u.style.width = r.width + 'px'; u.style.transform = 'translateX(' + (r.left - nr.left) + 'px)';
+        if (instant) { void u.offsetWidth; u.style.transition = ''; }
       };
-      S.moveU(S.onLink);
+      S.moveU(S.onLink, true);
       var cells = function () { return window.matchMedia && window.matchMedia('(max-width: 760px)').matches; };
       [].slice.call(nav.querySelectorAll('a')).forEach(function (a) { a.addEventListener('mouseenter', function () { if (!coarse && !cells()) { S.moveU(a); } }); });
       nav.addEventListener('mouseleave', function () { if (!cells()) { S.moveU(S.onLink); } });
@@ -212,22 +214,15 @@
     /* le jeu de cartes */
     S.deck = null;
     var deck = document.getElementById('deck');
-    var swipeMode = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
-    if (deck && swipeMode) {
-      var hintM = document.getElementById('hint');
-      if (hintM) { hintM.textContent = EN() ? 'Swipe, tap to open the profile.' : 'Balayez, touchez pour ouvrir la fiche.'; }
-      /* on ouvre sur une carte du milieu, comme a l'ecran */
-      var tr = deck.querySelector('.deck__tr'), cs = deck.querySelectorAll('.card');
-      if (tr && cs.length) { var mid = cs[Math.floor(cs.length / 2)]; tr.scrollLeft = mid.offsetLeft - (tr.clientWidth - mid.offsetWidth) / 2; }
-    }
-    if (deck && !swipeMode) {
+    var swipeMode = function () { return window.matchMedia && window.matchMedia('(max-width: 760px)').matches; };
+    if (deck) {
       var vp = deck.querySelector('.deck__vp'), track = deck.querySelector('.deck__tr'), capsTrack = deck.querySelector('.caps__tr');
       var cards = [].slice.call(deck.querySelectorAll('.card')), caps = [].slice.call(deck.querySelectorAll('.cap'));
       var ender = deck.querySelector('.card__end'), capEnder = deck.querySelector('.cap__end');
       var hint = document.getElementById('hint');
       var n = cards.length, cur = 0, timer = null, inView = true;
       var geo = { open: 300, slat: 60, w: 0 };
-      if (hint && coarse) { hint.textContent = EN() ? 'Swipe to see, tap to open the profile.' : 'Balayez pour voir, touchez pour ouvrir la fiche.'; }
+      if (hint && (coarse || swipeMode())) { hint.textContent = EN() ? 'Swipe, tap to open the profile.' : 'Balayez, touchez pour ouvrir la fiche.'; }
       /* a chaque visite, une piece differente pour chaque artiste */
       cards.forEach(function (c) {
         try {
@@ -236,16 +231,26 @@
         } catch (e) {}
       });
       function fit() {
+        if (swipeMode()) {
+          /* telephone : la carte ouverte fait 76 % de la largeur, le jeu prend sa hauteur */
+          deck.style.height = Math.round(vp.clientWidth * 0.76 * 4 / 3 + 24) + 'px';
+          return;
+        }
+        deck.style.height = '';
         if (!deck.classList.contains('deck--page')) { return; }
         var intro = document.querySelector('.intro');
         var hh = window.innerHeight - (bar ? bar.offsetHeight : 0) - (intro ? intro.offsetHeight : 0);
         deck.style.height = Math.max(380, hh) + 'px';
       }
       function measure() {
-        var vw = vp.clientWidth, vh = vp.clientHeight, min, max;
-        if (vw < 560) { min = 22; max = 34; } else if (vw < 1000) { min = 34; max = 50; } else { min = 44; max = 62; }
-        var open = Math.round(Math.min(vh * 0.8, vw * 0.5, 540));
-        open = Math.max(open, 170);
+        var vw = vp.clientWidth, vh = vp.clientHeight, min, max, open;
+        if (swipeMode()) {
+          open = Math.round(vw * 0.76); min = 20; max = 28;
+        } else {
+          if (vw < 560) { min = 22; max = 34; } else if (vw < 1000) { min = 34; max = 50; } else { min = 44; max = 62; }
+          open = Math.round(Math.min(vh * 0.8, vw * 0.5, 540));
+          open = Math.max(open, 170);
+        }
         var slat = Math.round((vw * 1.16 - open) / (n - 1));
         slat = Math.max(min, Math.min(max, slat));
         geo.open = open; geo.slat = slat; geo.w = open + (n - 1) * slat; geo.vw = vw;

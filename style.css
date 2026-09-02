@@ -512,21 +512,14 @@ a.mail:hover{opacity:.6}
  .bar__n a+a{border-left:1px solid var(--hair)}
  .bar__n a.on{color:var(--paper);text-decoration:none}
  /* le bloc noir glisse d'une entree a l'autre, comme l'interrupteur de langue */
- .bar__u{display:block;top:0;bottom:0;height:auto;background:var(--ink);z-index:0;transition:transform .36s var(--ease),width .36s var(--ease),opacity .2s}
+ .bar__u{display:block;top:0;bottom:0;height:auto;background:var(--ink);z-index:0;transition:transform .28s var(--ease),width .28s var(--ease),opacity .2s}
  .home .bar{position:sticky;background:var(--paper);border-bottom-color:var(--ink);color:var(--ink)}
  .home .hero{height:calc(100dvh - var(--chrome))}
  .home .hero__f{padding:3vh 7vw 3vh}
- /* le jeu : une carte a la fois, au doigt, le nom dessus */
- .deck,.deck--home,.deck--page{height:auto!important;min-height:0;flex:none}
- .deck__vp{overflow:visible;min-height:0}
- .deck__tr{position:static;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
-  padding:12px var(--gut) 18px;transform:none!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
- .deck__tr::-webkit-scrollbar{display:none}
- .card{position:relative;flex:0 0 76vw;width:auto!important;height:auto;aspect-ratio:3/4;transform:none!important;scroll-snap-align:center;
-  box-shadow:0 14px 34px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.15);transition:none}
- .card img{transform:none}
- .card__v,.card__end,.caps{display:none}
- .card__t{display:block;position:absolute;left:0;bottom:0;z-index:3;background:var(--paper);color:var(--ink);padding:9px 11px 8px;
+ /* le jeu : la carte ouverte en grand, les autres en lamelles, le nom sur la carte */
+ .deck--home,.deck--page{min-height:0;flex:none}
+ .caps{display:none}
+ .card.is-open .card__t{display:block;position:absolute;left:0;bottom:0;z-index:3;background:var(--paper);color:var(--ink);padding:9px 11px 8px;
   font-size:14px;letter-spacing:-.01em;border-top:1px solid var(--hair);border-right:1px solid var(--hair)}
  .deckrow{border-bottom:0}
  .hero{min-height:0}
