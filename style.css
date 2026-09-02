@@ -49,9 +49,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------------------------------------------------------------- 2. Entete */
 /* le mot-marque a gauche, les entrees a droite ; la barre se range en descendant */
 .bar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:var(--rule) solid var(--ink);
- display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px var(--gut) 14px;
- transition:transform .25s var(--ease),background .3s var(--ease),color .3s var(--ease)}
-.bar.is-hid{transform:translateY(-100%)}
+ display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px var(--gut) 14px;will-change:transform,opacity;
+ transition:transform .55s var(--ease),opacity .45s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+.bar.is-hid{transform:translateY(-100%);opacity:0;transition:transform .55s var(--ease),opacity .4s var(--ease) .05s,background .3s var(--ease),color .3s var(--ease)}
 .bar__w{font-size:19px;letter-spacing:-.025em;white-space:nowrap}
 .bar__n{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
 .bar__n a{font-size:var(--t5);letter-spacing:.06em;font-weight:400;opacity:.55;transition:opacity .2s;padding:6px 0}

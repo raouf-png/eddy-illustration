@@ -88,8 +88,8 @@
         var bar = document.getElementById('bar'), y = window.pageYOffset;
         solid();
         if (bar) {
-          if (y > lastY + 6 && y > 120) { bar.classList.add('is-hid'); }
-          else if (y < lastY - 6 || y < 60) { bar.classList.remove('is-hid'); }
+          if (y > lastY + 10 && y > 160) { bar.classList.add('is-hid'); }
+          else if (y < lastY - 4 || y < 80) { bar.classList.remove('is-hid'); }
         }
         lastY = y; ticking = false;
       });
