@@ -170,9 +170,7 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
 .more i{font-style:normal}
 .more:hover,.more:focus-visible{background:var(--ink);color:var(--paper)}
 .more:hover .mi{opacity:.7}
-.deck__vp{position:relative;flex:1 1 auto;min-height:230px;overflow:hidden;
- -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26px,#000 calc(100% - 26px),transparent 100%);
- mask-image:linear-gradient(90deg,transparent 0,#000 26px,#000 calc(100% - 26px),transparent 100%)}
+.deck__vp{position:relative;flex:1 1 auto;min-height:230px;overflow:hidden}
 .deck__tr{position:absolute;inset:0;transform:translate3d(0,0,0);transition:transform var(--dur) var(--ease)}
 .card{position:absolute;left:0;top:0;height:100%;width:var(--w,320px);border-radius:14px 14px 0 0;overflow:hidden;
  background:var(--c,#eee);transform:translate3d(var(--x,0),0,0);transition:transform var(--dur) var(--ease);
@@ -527,7 +525,6 @@ a.mail:hover{opacity:.6}
  .wk__im{aspect-ratio:4/3}
  .une__w{grid-template-columns:repeat(3,1fr)}
  .deck--page{height:calc(100dvh - var(--chrome) - 120px);min-height:360px}
- .deck__vp{-webkit-mask-image:none;mask-image:none}
  .deck--home{height:min(56vh,520px);min-height:340px;flex:none}
  .caps{height:56px}
  .cap__go{display:none}
