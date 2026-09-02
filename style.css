@@ -252,7 +252,18 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
 .foot__m b{font-size:17px;letter-spacing:-.015em}
 
 /* ---------------------------------------------------------- 7. Le pied de page */
-.colo{border-top:var(--rule) solid var(--ink);display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:1px;background:var(--hair)}
+.colo{border-top:var(--rule) solid var(--ink);display:grid;grid-template-columns:1fr 1.6fr;gap:1px;background:var(--hair)}
+.soc{display:flex;gap:14px;margin-top:6px}
+.soc__a{display:inline-flex;color:var(--ink);transition:opacity .2s}
+.soc__a--off{opacity:.35}
+.ico{fill:none;stroke:currentColor;stroke-width:1.1;stroke-linejoin:round;stroke-linecap:round;overflow:visible}
+.ico .bx{fill:var(--paper);transition:fill .25s var(--ease)}
+.ico .gl{transition:stroke .25s var(--ease),fill .25s var(--ease)}
+.ico .dot{fill:currentColor;stroke:none;transition:fill .25s var(--ease)}
+a.soc__a:hover .bx{fill:var(--ink)}
+a.soc__a:hover .gl{stroke:var(--paper)}
+a.soc__a:hover .dot{fill:var(--paper)}
+a.soc__a:hover .ico path.gl{fill:var(--paper)}
 .colo>div{background:var(--paper);padding:var(--s5) var(--gut) 28px;display:flex;flex-direction:column;gap:7px;
  font-weight:400;font-size:13px;line-height:1.6}
 .colo b{font-weight:700;font-size:15px;margin-bottom:4px}
