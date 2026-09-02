@@ -99,6 +99,7 @@
         var H = JSON.parse(heroData.textContent), a = H[Math.floor(Math.random() * H.length)], h = document.getElementById('hero');
         heroIm.srcset = a.set; heroIm.src = a.src; heroIm.width = a.w; heroIm.height = a.h; heroIm.alt = (EN() ? 'Illustration by ' : 'Illustration de ') + a.n;
         h.style.setProperty('--c', a.c); h.style.setProperty('--fg', a.fg);
+        root.style.setProperty('--fg', a.fg); root.style.setProperty('--fgi', a.fg === '#fff' ? '#0d0d0d' : '#fff');
         document.getElementById('hero-a').href = 'a-' + a.s + '.html'; document.getElementById('hero-n').textContent = a.n;
         heroIm.addEventListener('load', function () { h.classList.add('is-on'); });
       } catch (e) {}

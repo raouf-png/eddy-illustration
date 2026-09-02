@@ -41,6 +41,7 @@
 var h=document.getElementById('hero');
 var im=document.getElementById('hero-im');im.srcset=a.set;im.src=a.src;im.width=a.w;im.height=a.h;im.alt='Illustration de '+a.n;
 h.style.setProperty('--c',a.c);h.style.setProperty('--fg',a.fg);
+document.documentElement.style.setProperty('--fg',a.fg);document.documentElement.style.setProperty('--fgi',a.fg==='#fff'?'#0d0d0d':'#fff');
 var l=document.getElementById('hero-a');l.href='a-'+a.s+'.html';
 document.getElementById('hero-n').textContent=a.n;
 im.addEventListener('load',function(){h.classList.add('is-on')});if(im.complete&&im.naturalWidth){h.classList.add('is-on')}})();
