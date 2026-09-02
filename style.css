@@ -134,6 +134,7 @@ html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opa
 .une__w .flat{padding:8%;aspect-ratio:1;min-height:0;border-left:1px solid var(--hair)}
 .une__w .flat:first-child{border-left:0}
 .une__w .flat img{max-width:100%;max-height:100%}
+.une__w a.flat{cursor:pointer}
 .une__p{background:var(--paper);padding:22px 20px;display:flex;flex-direction:column;gap:14px;justify-content:center}
 .une__p p{font-weight:400;font-size:14px;line-height:1.7}
 .une__p .rubs{margin:0}

@@ -99,6 +99,7 @@
         var im = f.querySelector('img');
         im.srcset = q.set; im.src = q.src; im.width = q.w; im.height = q.h; im.alt = (EN ? 'Illustration by ' : 'Illustration de ') + ua.n;
         f.style.backgroundImage = 'linear-gradient(' + ua.tint + ',' + ua.tint + ')';
+        if (f.tagName === 'A') { f.href = 'a-' + ua.s + '.html'; f.setAttribute('aria-label', ua.n + (EN ? ', discover the artist' : ', découvrir l\'artiste')); }
       });
     } catch (e) {}
   }
