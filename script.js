@@ -150,8 +150,9 @@
         u.style.opacity = '1'; u.style.width = r.width + 'px'; u.style.transform = 'translateX(' + (r.left - nr.left) + 'px)';
       };
       S.moveU(S.onLink);
-      [].slice.call(nav.querySelectorAll('a')).forEach(function (a) { a.addEventListener('mouseenter', function () { if (!coarse) { S.moveU(a); } }); });
-      nav.addEventListener('mouseleave', function () { S.moveU(S.onLink); });
+      var cells = function () { return window.matchMedia && window.matchMedia('(max-width: 760px)').matches; };
+      [].slice.call(nav.querySelectorAll('a')).forEach(function (a) { a.addEventListener('mouseenter', function () { if (!coarse && !cells()) { S.moveU(a); } }); });
+      nav.addEventListener('mouseleave', function () { if (!cells()) { S.moveU(S.onLink); } });
     }
 
     /* a la une : un artiste au hasard, trois pieces au hasard, jamais l'artiste de la porte */
