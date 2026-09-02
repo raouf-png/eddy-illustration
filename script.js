@@ -4,12 +4,46 @@
    Tout vit dans init(), rejoue quand la langue change sans rechargement. */
 (function () {
   'use strict';
+  var I18N = [["Eddy Illustration réunit et représente des illustrateurs et des animateurs. La maison produit leurs images pour la campagne, l'édition et l'écran.", "Eddy Illustration brings together and represents illustrators and animators. The house produces their images for campaigns, publishing and screen."], ["La phrase sur la place d'Eddy Illustration dans le groupe Eddy vient ici. Elle sert aussi d'accroche sur la page d'accueil.", "The line on Eddy Illustration's place in the Eddy group goes here. It also opens the home page."], ["Cette adresse ne mène nulle part. Les artistes, eux, sont bien là. Attrapez-en un, ou cliquez à côté pour les relancer.", "This address leads nowhere. The artists, though, are right here. Grab one, or click beside them to throw them again."], ["Eddy Illustration est la maison d'illustration et d'animation du groupe Eddy, société de production établie à Paris.", "Eddy Illustration is the illustration and animation house of the Eddy group, a production company based in Paris."], ["Les projets viendront ici, six en vitrine puis le catalogue complet. Aucun projet n'est publié pour l'instant.", "Projects will live here, six on display then the full catalogue. No project is published yet."], ["Eddy Illustration, illustration et animation : des illustrateurs et des animateurs représentés par Eddy.", "Eddy Illustration, illustration and animation: illustrators and animators represented by Eddy."], ["Le texte de présentation du projet vient ici, en trois paragraphes, avec les partenaires cités et liés.", "The project text goes here, in three paragraphs, with the partners named and linked."], ["Les projets viendront ici, six en vitrine puis le catalogue, filtrés par rubrique.", "Projects will live here, six on display then the catalogue, filtered by category."], ["Les artistes représentés par Eddy Illustration, en illustration et en animation.", "The artists represented by Eddy Illustration, in illustration and animation."], ["Sorties de projets et nouvelles signatures, par courriel, quelques fois par an.", "Project releases and new signings, by email, a few times a year."], ["La phrase sur la place d'Eddy Illustration dans le groupe Eddy vient ici.", "The line on Eddy Illustration's place in the Eddy group goes here."], ["Les visuels du projet viennent ici, en pleine largeur puis par paires.", "The project visuals go here, full width then in pairs."], ["Les images présentées sur ce site sont la propriété de leurs auteurs.", "The images on this site are the property of their authors."], ["Une demande pour un artiste, un projet, une question : écrivez-nous.", "A request for an artist, a project, a question: write to us."], ["Eddy Illustration représente des illustrateurs et des animateurs.", "Eddy Illustration represents illustrators and animators."], ["Ce site ne dépose aucun cookie et ne charge aucun service tiers.", "This site sets no cookies and loads no third-party service."], ["Les trois lignes sur le studio et le groupe Eddy viennent ici.", "The three lines on the studio and the Eddy group go here."], ["Joindre Eddy Illustration : courriel, adresse et réseaux.", "Reach Eddy Illustration: email, address and social."], ["Eddy Illustration : présentation, services et équipe.", "Eddy Illustration: about, services and team."], ["Survol pour voir, clic pour entrer dans la fiche.", "Hover to see, click to open the profile."], ["Ce site ne collecte aucune donnée personnelle.", "This site collects no personal data."], ["Le texte de présentation du studio vient ici.", "The studio text goes here."], ["Les nouvelles du studio, quelques fois par an", "News from the studio, a few times a year"], ["Mentions légales du site Eddy Illustration.", "Legal notice of the Eddy Illustration website."], [", artiste représenté par Eddy Illustration.", ", artist represented by Eddy Illustration."], ["Gabarit de page projet, Eddy Illustration.", "Project page template, Eddy Illustration."], ["L'adresse de contact du studio vient ici.", "The studio contact address goes here."], ["Sorties de projets, nouvelles signatures", "Project releases, new signings"], ["Balayez, touchez pour ouvrir la fiche.", "Swipe, tap to open the profile."], ["Présentation de l'artiste à écrire.", "Artist's presentation to be written."], ["Votre demande, en quelques lignes.\"", "Your request, in a few lines.\""], ["Les projets d'Eddy Illustration.", "Eddy Illustration projects."], ["Instagram et site à renseigner.", "Instagram and website to be added."], ["Titre de la nouvelle à écrire.", "Headline to be written."], ["Ce que fait Eddy Illustration", "What Eddy Illustration does"], ["Deux lignes sur la nouvelle.", "Two lines about the news."], ["Artistes | Eddy Illustration", "Artists | Eddy Illustration"], ["Projets | Eddy Illustration", "Projects | Eddy Illustration"], ["Un artiste, et les projets", "One artist, and the projects"], ["Sept pièces, sept artistes", "Seven pieces, seven artists"], ["Illustration et animation.", "Illustration and animation."], ["Illustration et animation.", "Illustration and animation."], ["Illustration et animation", "Illustration and animation"], ["Un projet ? Écrivez-nous.", "A project? Write to us."], ["Cette page n'existe pas.", "This page does not exist."], ["Recevoir les nouvelles.", "Receive the news."], ["Un projet, une demande", "A project, a request"], ["Images © leurs auteurs", "Images © their authors"], ["Le site est édité par", "This site is published by"], [", découvrir l'artiste", ", discover the artist"], ["Mockups et campagnes", "Mockups and campaigns"], ["Découvrir l'artiste", "Discover the artist"], ["Retour à l'accueil", "Back to home"], ["Nouvelle signature", "New signing"], ["Page introuvable.", "Page not found."], ["Rester en contact", "Stay in touch"], ["Tous les artistes", "All artists"], ["Page introuvable", "Page not found"], ["Mentions légales", "Legal notice"], ["Tous les projets", "All projects"], ["Sortie de projet", "Project release"], ["vous@exemple.fr\"", "you@example.com\""], ["Illustration de ", "Illustration by "], ["Titre du projet", "Project title"], ["Ordre d'origine", "Original order"], ["Votre courriel", "Your email"], ["Prénom et nom\"", "First and last name\""], ["Votre message", "Your message"], ["Les artistes.", "The artists."], ["Les artistes\"", "The artists\""], ["Demande pour ", "Request for "], ["Trois pièces", "Three pieces"], ["Les artistes", "The artists"], ["Pied de page", "Footer"], ["Rattachement", "The group"], ["Présentation", "About"], ["Portrait de ", "Portrait of "], ["Six projets", "Six projects"], ["Le travail", "The work"], ["En vitrine", "On display"], ["Erreur 404", "Error 404"], ["Vie privée", "Privacy"], ["Actualités", "News"], ["360 degrés", "360 degrees"], ["Votre nom", "Your name"], ["Le roster", "The roster"], ["Le studio", "The studio"], ["Précédent", "Previous"], ["S'abonner", "Subscribe"], ["Hébergeur", "Host"], ["L'équipe", "The team"], ["À la une", "Featured"], ["Artistes", "Artists"], ["Éditeur", "Publisher"], ["Crédits", "Credits"], ["Données", "Data"], ["Envoyer", "Send"], ["Adresse", "Address"], ["Réseaux", "Social"], ["Suivant", "Next"], ["Exemple", "Example"], ["à venir", "to come"], ["Accueil", "Home"], ["Projets", "Projects"], ["Artiste", "Artist"], ["Droits", "Rights"], ["Écrire", "Write"], ["Équipe", "Team"], ["Projet", "Project"], ["A à Z", "A to Z"], ["Année", "Year"], ["Liens", "Links"], ["Plan", "Site map"], ["Pour", "For"], ["Site", "Website"]];
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   var root = document.documentElement;
   var S = { deck: null, moveU: null, onLink: null };   /* l'etat courant, remplace a chaque init */
 
   function EN() { return root.lang === 'en'; }
+
+  /* ================================================== la traduction en place */
+  function esc(x) { return x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function translatePage(to) {
+    var from = to === 'en' ? 'fr' : 'en';
+    if (root.lang === to) { return; }
+    var pairs = I18N.map(function (p) { return to === 'en' ? p : [p[1], p[0]]; });
+    pairs.sort(function (a, b) { return b[0].length - a[0].length; });
+    var res = pairs.map(function (p) { return [new RegExp('(^|[^\\p{L}])' + esc(p[0]) + '(?=[^\\p{L}]|$)', 'gu'), p[1]]; });
+    function tr(t) {
+      var o = t;
+      res.forEach(function (r) { if (r[0].test(t)) { t = t.replace(r[0], function (m, pre) { return pre + r[1]; }); } r[0].lastIndex = 0; });
+      return t;
+    }
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), nodes = [];
+    while (w.nextNode()) { nodes.push(w.currentNode); }
+    nodes.forEach(function (n) {
+      var tag = n.parentNode && n.parentNode.tagName;
+      if (!n.nodeValue.trim() || tag === 'SCRIPT' || tag === 'STYLE') { return; }
+      var t = tr(n.nodeValue); if (t !== n.nodeValue) { n.nodeValue = t; }
+    });
+    ['alt', 'aria-label', 'placeholder', 'title'].forEach(function (attr) {
+      [].forEach.call(document.querySelectorAll('[' + attr + ']'), function (el) { var v = el.getAttribute(attr), t = tr(v); if (t !== v) { el.setAttribute(attr, t); } });
+    });
+    [].forEach.call(document.querySelectorAll('a[href^="mailto:"]'), function (a) {
+      var h = a.getAttribute('href'); var t = decodeURIComponent(h); var u = tr(t); if (u !== t) { a.setAttribute('href', u.replace(/ /g, '%20')); }
+    });
+    document.title = tr(document.title);
+    var md = document.querySelector('meta[name="description"]'); if (md) { md.setAttribute('content', tr(md.getAttribute('content'))); }
+    root.lang = to;
+    var hint = document.getElementById('hint');
+    if (hint) { hint.textContent = tr(hint.textContent); }
+  }
 
   /* ================================================== ce qui ne se branche qu'une fois */
   if (!window.__eddy) {
@@ -105,36 +139,24 @@
       } catch (e) {}
     }
 
-    /* la langue : l'interrupteur du pied change la page en place, sans rechargement quand c'est possible */
+    /* la langue : l'interrupteur traduit la page sur place, mot a mot, sans rien charger */
     var lt = document.querySelector('.colo__b .lang');
     if (lt) {
       lt.href = lt.getAttribute('href').split('?')[0].split('#')[0] + window.location.search + window.location.hash;
       lt.addEventListener('click', function (e) {
-        try { localStorage.setItem('lang', lt.getAttribute('data-lang')); } catch (er) {}
         e.preventDefault(); e.stopPropagation();
-        var to = lt.href;
+        var to = lt.getAttribute('data-lang');
+        try { sessionStorage.setItem('lang', to); } catch (er) {}
         lt.classList.add('is-switching');
-        window.setTimeout(function () { root.classList.add('is-leaving'); }, reduce ? 0 : 260);
-        var go = function () { window.location.href = to; };
-        if (window.location.protocol === 'file:' || !window.fetch) { window.setTimeout(go, reduce ? 0 : 520); return; }
-        fetch(to, { credentials: 'same-origin' }).then(function (r) { if (!r.ok) { throw new Error(r.status); } return r.text(); }).then(function (html) {
-          window.setTimeout(function () {
-            var doc = new DOMParser().parseFromString(html, 'text/html');
-            window.history.pushState({ eddy: 1 }, '', to);
-            root.lang = doc.documentElement.lang;
-            document.title = doc.title;
-            var md = document.querySelector('meta[name="description"]'), nd = doc.querySelector('meta[name="description"]');
-            if (md && nd) { md.setAttribute('content', nd.getAttribute('content')); }
-            document.body.className = doc.body.className;
-            document.body.setAttribute('style', doc.body.getAttribute('style') || '');
-            root.classList.add('is-entering');
-            document.body.innerHTML = doc.body.innerHTML;
-            window.scrollTo(0, 0);
-            root.classList.remove('is-leaving');
-            init();
-            window.requestAnimationFrame(function () { window.requestAnimationFrame(function () { root.classList.remove('is-entering'); }); });
-          }, reduce ? 0 : 420);
-        }).catch(function () { go(); });
+        window.setTimeout(function () {
+          translatePage(to);
+          lt.classList.remove('is-switching');
+          lt.setAttribute('data-on', to); lt.setAttribute('data-lang', to === 'en' ? 'fr' : 'en'); lt.setAttribute('aria-checked', to === 'en' ? 'true' : 'false');
+          lt.setAttribute('aria-label', to === 'en' ? 'Français' : 'English');
+          var opts = lt.querySelectorAll('.lsw__o'); opts[0].classList.toggle('is-on', to === 'fr'); opts[1].classList.toggle('is-on', to === 'en');
+          lt.href = (to === 'en' ? (root.getAttribute('data-root') === 'en' ? '' : '../') : (root.getAttribute('data-root') === 'en' ? 'en/' : '')) ;
+          lt.href = lt.getAttribute('data-href-' + (to === 'en' ? 'fr' : 'en')) || '#';
+        }, reduce ? 0 : 300);
       });
     }
 
@@ -199,16 +221,17 @@
     } else { rv.forEach(function (el) { el.classList.add('in'); }); }
 
     /* la pilule de demande suit la lecture */
-    var dem = document.getElementById('dem'), ask = document.getElementById('ask');
+    var dem = document.getElementById('dem'), ask = document.getElementById('ask'), colo = document.querySelector('.colo');
     if (dem && ask && 'IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          var past = !e.isIntersecting && e.boundingClientRect.top < 0;
-          ask.classList.toggle('is-on', past);
-          ask.setAttribute('aria-hidden', past ? 'false' : 'true');
-          ask.querySelector('a').tabIndex = past ? 0 : -1;
-        });
-      }, { threshold: 0 }).observe(dem);
+      var pastDem = false, footVisible = false;
+      var show = function () {
+        var on = pastDem && !footVisible;
+        ask.classList.toggle('is-on', on);
+        ask.setAttribute('aria-hidden', on ? 'false' : 'true');
+        ask.querySelector('a').tabIndex = on ? 0 : -1;
+      };
+      new IntersectionObserver(function (es) { es.forEach(function (e) { pastDem = !e.isIntersecting && e.boundingClientRect.top < 0; }); show(); }, { threshold: 0 }).observe(dem);
+      if (colo) { new IntersectionObserver(function (es) { es.forEach(function (e) { footVisible = e.isIntersecting; }); show(); }, { threshold: 0 }).observe(colo); }
     }
 
     /* le jeu de cartes */
