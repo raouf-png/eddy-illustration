@@ -489,9 +489,6 @@ a.mail:hover{opacity:.6}
  .colo__b{gap:10px 18px;padding:14px var(--gut)}
  .colo__b a,.colo__b span{padding:11px 0}
  .colo__b .lsw{padding:0}
- .colo__b .lsw{width:100%;order:9;grid-template-columns:1fr 1fr}
- .lsw{font-size:11px;letter-spacing:.16em}
- .lsw__o{padding:15px 12px 14px}
  .slist--team a{padding:8px 0 4px}
  .names--col .nm{padding:13px 16px;min-height:44px}
  .rub{padding:10px 12px 9px}
