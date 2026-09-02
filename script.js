@@ -212,14 +212,22 @@
     /* le jeu de cartes */
     S.deck = null;
     var deck = document.getElementById('deck');
-    if (deck) {
+    var swipeMode = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
+    if (deck && swipeMode) {
+      var hintM = document.getElementById('hint');
+      if (hintM) { hintM.textContent = EN() ? 'Swipe, tap to open the profile.' : 'Balayez, touchez pour ouvrir la fiche.'; }
+      /* on ouvre sur une carte du milieu, comme a l'ecran */
+      var tr = deck.querySelector('.deck__tr'), cs = deck.querySelectorAll('.card');
+      if (tr && cs.length) { var mid = cs[Math.floor(cs.length / 2)]; tr.scrollLeft = mid.offsetLeft - (tr.clientWidth - mid.offsetWidth) / 2; }
+    }
+    if (deck && !swipeMode) {
       var vp = deck.querySelector('.deck__vp'), track = deck.querySelector('.deck__tr'), capsTrack = deck.querySelector('.caps__tr');
       var cards = [].slice.call(deck.querySelectorAll('.card')), caps = [].slice.call(deck.querySelectorAll('.cap'));
       var ender = deck.querySelector('.card__end'), capEnder = deck.querySelector('.cap__end');
       var hint = document.getElementById('hint');
       var n = cards.length, cur = 0, timer = null, inView = true;
       var geo = { open: 300, slat: 60, w: 0 };
-      if (hint && coarse) { hint.textContent = EN() ? 'Swipe to see, tap to open the profile.' : 'Balayer pour voir, toucher pour entrer dans la fiche.'; }
+      if (hint && coarse) { hint.textContent = EN() ? 'Swipe to see, tap to open the profile.' : 'Balayez pour voir, touchez pour ouvrir la fiche.'; }
       /* a chaque visite, une piece differente pour chaque artiste */
       cards.forEach(function (c) {
         try {

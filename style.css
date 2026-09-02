@@ -58,8 +58,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .bar__n a.on,.bar__n a:hover{opacity:1}
 html:not(.js) .bar__n a.on{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 .bar__n{position:relative}
-.bar__u{position:absolute;left:0;bottom:3px;height:1px;width:0;background:currentColor;opacity:0;pointer-events:none;
- transform-origin:left;transition:transform .38s var(--ease),width .38s var(--ease),opacity .25s}
+.bar__u{position:absolute;left:0;bottom:3px;height:1px;width:0;background:currentColor;opacity:0;pointer-events:none;box-sizing:border-box;
+ transform-origin:left;will-change:transform,width;transition:transform .38s var(--ease),width .38s var(--ease),opacity .25s}
 /* la page s'efface en partant et arrive par le bas ; la barre reste en place */
 .js main,.js .colo,.js .colo__b{transition:opacity .28s var(--ease),transform .34s var(--ease)}
 html.js.is-entering main,html.js.is-entering .colo,html.js.is-entering .colo__b{opacity:0;transform:translateY(14px)}
@@ -77,9 +77,10 @@ html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opa
 .lsw.is-switching[data-on="en"] .lsw__k,.lsw.is-switching[data-on="en"]:hover .lsw__k{transform:translateX(0)}
 .lsw.is-switching .lsw__o{color:var(--ink)}
 .lsw.is-switching .lsw__o:not(.is-on){color:var(--paper)}
-/* sur l'accueil la barre flotte sur le grand espace, puis se pose en blanc */
+/* sur l'accueil (ecran) la barre flotte sur le grand espace, puis se pose en blanc */
 .home .bar{position:fixed;left:0;right:0;background:transparent;border-bottom-color:transparent;color:var(--fg)}
 .home .bar.is-solid{background:var(--paper);border-bottom-color:var(--ink);color:var(--ink)}
+.home .bar:not(.is-solid) .bar__u{background:currentColor}
 
 /* ------------------------------------------------------------ 3. Le grand espace */
 /* une piece seule sur l'aplat de son artiste, la ligne en bas a gauche, le nom en bas a droite */
@@ -182,6 +183,7 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
 .card__n{position:absolute;left:0;top:13px;z-index:3;min-width:29px;padding:4px 6px 3px;background:var(--paper);
  border-right:1px solid var(--hair);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
  border-radius:0 4px 4px 0;font-size:10px;letter-spacing:.1em;font-weight:400}
+.card__t{display:none}
 .card__end,.cap__end{position:absolute;left:0;top:0;height:100%;width:var(--w,320px);background:var(--paper);
  transform:translate3d(var(--x,0),0,0);transition:transform var(--dur) var(--ease)}
 .caps{position:relative;height:64px;flex:0 0 auto;overflow:hidden;background:var(--paper);
@@ -511,10 +513,22 @@ a.mail:hover{opacity:.6}
  .bar__n a.on{color:var(--paper);text-decoration:none}
  /* le bloc noir glisse d'une entree a l'autre, comme l'interrupteur de langue */
  .bar__u{display:block;top:0;bottom:0;height:auto;background:var(--ink);z-index:0;transition:transform .36s var(--ease),width .36s var(--ease),opacity .2s}
- .home .bar:not(.is-solid) .bar__n{background:transparent;border-top-color:transparent}
- .home .bar:not(.is-solid) .bar__n a{color:inherit;opacity:.75;border-left-color:transparent}
- .home .bar:not(.is-solid) .bar__n a.on{opacity:1;text-decoration:none;color:inherit}
- .home .bar:not(.is-solid) .bar__u{background:transparent;box-shadow:inset 0 0 0 1px currentColor}
+ .home .bar{position:sticky;background:var(--paper);border-bottom-color:var(--ink);color:var(--ink)}
+ .home .hero{height:calc(100dvh - var(--chrome))}
+ .home .hero__f{padding:3vh 7vw 3vh}
+ /* le jeu : une carte a la fois, au doigt, le nom dessus */
+ .deck,.deck--home,.deck--page{height:auto!important;min-height:0;flex:none}
+ .deck__vp{overflow:visible;min-height:0}
+ .deck__tr{position:static;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+  padding:12px var(--gut) 18px;transform:none!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+ .deck__tr::-webkit-scrollbar{display:none}
+ .card{position:relative;flex:0 0 76vw;width:auto!important;height:auto;aspect-ratio:3/4;transform:none!important;scroll-snap-align:center;
+  box-shadow:0 14px 34px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.15);transition:none}
+ .card img{transform:none}
+ .card__v,.card__end,.caps{display:none}
+ .card__t{display:block;position:absolute;left:0;bottom:0;z-index:3;background:var(--paper);color:var(--ink);padding:9px 11px 8px;
+  font-size:14px;letter-spacing:-.01em;border-top:1px solid var(--hair);border-right:1px solid var(--hair)}
+ .deckrow{border-bottom:0}
  .hero{min-height:0}
  .hero__f{padding:calc(var(--chrome) + 3vh) 7vw 3vh}
  .hero__b{flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:40px}
