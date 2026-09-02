@@ -65,9 +65,9 @@ html:not(.js) .bar__n a.on{text-decoration:underline;text-underline-offset:4px;t
 html.js.is-entering main,html.js.is-entering .colo,html.js.is-entering .colo__b{opacity:0;transform:translateY(14px)}
 html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opacity:0;transform:translateY(-10px)}
 /* l'interrupteur de langue : le bloc noir couvre la langue en cours, glisse vers l'autre au clic */
-.lsw{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);opacity:1;
- font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;line-height:1;overflow:hidden;vertical-align:middle}
-.lsw__o{position:relative;z-index:1;padding:6px 9px 5px;min-width:34px;text-align:center;color:var(--ink);transition:color .3s var(--ease)}
+.lsw{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);opacity:1;width:max-content;justify-self:start;
+ font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;line-height:1;overflow:hidden;vertical-align:middle}
+.lsw__o{position:relative;z-index:1;padding:6px 8px 5px;min-width:30px;text-align:center;color:var(--ink);transition:color .3s var(--ease)}
 .lsw__o.is-on{color:var(--paper)}
 .lsw__k{position:absolute;top:0;bottom:0;left:0;width:50%;background:var(--ink);transition:transform .38s var(--ease)}
 .lsw[data-on="en"] .lsw__k{transform:translateX(100%)}
@@ -487,6 +487,7 @@ a.mail:hover{opacity:.6}
  .colo a{padding:5px 0}
  .colo>div{padding:18px var(--gut) 20px;gap:4px}
  .colo__b{grid-template-columns:1fr auto;gap:6px 18px;padding:14px var(--gut);white-space:normal}
+ .colo__b>*{justify-self:start}
  .colo__b>*:nth-child(2n){justify-self:end;text-align:right}
  .colo__b a,.colo__b span{padding:11px 0}
  .colo__b .lsw{padding:0}
