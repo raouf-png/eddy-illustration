@@ -549,7 +549,8 @@ a.mail:hover{opacity:.6}
  .roster #roster{padding-top:22px}
  .pj__t{font-size:16px}
  .slist--team a{padding:8px 0 4px}
- .names--col .nm{padding:13px 16px;min-height:44px}
+ .names--col .nm{padding:13px 10px 13px 12px;min-height:44px}
+ .names--col .nm .mi:empty{display:none}
  .rub{padding:10px 12px 9px}
  .fld input,.fld select,.fld textarea{padding:12px 0;font-size:16px}
  .sort{gap:14px}
@@ -591,7 +592,9 @@ a.mail:hover{opacity:.6}
  .deck--home{height:min(56vh,520px);min-height:340px;flex:none}
  .caps{height:56px}
  .cap__go{display:none}
- .names--col{grid-template-columns:1fr}
+ /* les treize noms sur deux colonnes, sept rangees ; le treizieme prend toute la largeur */
+ .names--col{grid-template-columns:repeat(2,1fr)}
+ .names--col .nm:last-child:nth-child(odd){grid-column:1/-1}
  .tiles{grid-template-columns:repeat(2,1fr)}
  .colo{grid-template-columns:1fr}
  .foot{grid-template-columns:1fr}
@@ -624,8 +627,13 @@ a.mail:hover{opacity:.6}
 @media(max-width:420px){
  .big{font-size:clamp(28px,9vw,44px)}
  .tiles{grid-template-columns:1fr 1fr}
- .names{grid-template-columns:1fr}
+ .names:not(.names--col){grid-template-columns:1fr}
  .bar__w{font-size:16px}
+}
+@media(max-width:374px){
+ /* sous 375 px les deux colonnes couperaient Clement Soulmagnon : une seule colonne */
+ .names--col{grid-template-columns:1fr}
+ .names--col .nm:last-child:nth-child(odd){grid-column:auto}
 }
 @media(prefers-reduced-motion:reduce){
  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
