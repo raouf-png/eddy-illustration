@@ -335,24 +335,46 @@
       function play() { if (reduce || !inView) { return; } stop(); timer = window.setInterval(function () { open(cur + 1, true); }, 3400); }
       function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
       function restart() { stop(); play(); }
+      /* au doigt : le doigt qui glisse fait defiler les cartes une a une (une lamelle de
+         course = une carte, comme le survol a la souris), un toucher sur une lamelle la met
+         devant, un toucher sur la carte ouverte entre dans la fiche. Le telephone rejoue des
+         evenements souris (mouseenter, focus) juste apres un toucher : on les ignore, sinon
+         le premier toucher ouvrait la carte ET entrait dans la fiche d'un coup. */
+      var tch = { at: 0, x: 0, y: 0, from: 0, axis: '', scrubbed: false };
+      var viaTouch = function () { return Date.now() - tch.at < 1200; };
       cards.forEach(function (c, k) {
-        c.addEventListener('mouseenter', function () { stop(); open(k, true); });
-        c.addEventListener('focus', function () { stop(); open(k, true); });
-        c.addEventListener('click', function (e) { if (k !== cur) { e.preventDefault(); stop(); open(k, true); } });
+        c.addEventListener('mouseenter', function () { if (viaTouch()) { return; } stop(); open(k, true); });
+        c.addEventListener('focus', function () { if (viaTouch()) { return; } stop(); open(k, true); });
+        c.addEventListener('click', function (e) {
+          if (tch.scrubbed) { e.preventDefault(); tch.scrubbed = false; return; }
+          if (k !== cur) { e.preventDefault(); stop(); open(k, true); }
+        });
       });
       caps.forEach(function (c, k) {
-        c.addEventListener('mouseenter', function () { stop(); open(k, true); });
+        c.addEventListener('mouseenter', function () { if (viaTouch()) { return; } stop(); open(k, true); });
         c.addEventListener('click', function () { stop(); open(k, true); });
       });
       deck.addEventListener('mouseleave', play);
       deck.addEventListener('focusout', function (e) { if (!deck.contains(e.relatedTarget)) { play(); } });
-      var sx = 0, sy = 0, sw = false;
-      vp.addEventListener('touchstart', function (e) { var t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; sw = true; stop(); }, { passive: true });
-      vp.addEventListener('touchend', function (e) {
-        if (!sw) { return; } sw = false;
-        var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
-        if (Math.abs(dx) > 38 && Math.abs(dx) > Math.abs(dy)) { open(cur + (dx < 0 ? 1 : -1), true); }
+      vp.addEventListener('touchstart', function (e) {
+        var t = e.changedTouches[0];
+        tch.at = Date.now(); tch.x = t.clientX; tch.y = t.clientY; tch.from = cur; tch.axis = ''; tch.scrubbed = false;
+        stop();
       }, { passive: true });
+      vp.addEventListener('touchmove', function (e) {
+        var t = e.changedTouches[0], dx = t.clientX - tch.x, dy = t.clientY - tch.y;
+        if (!tch.axis) {
+          if (Math.abs(dx) < 6 && Math.abs(dy) < 6) { return; }
+          tch.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        }
+        if (tch.axis !== 'x') { return; }
+        tch.scrubbed = true;
+        var step = Math.max(geo.slat, 24);
+        var idx = Math.max(0, Math.min(n - 1, tch.from + Math.round(-dx / step)));
+        if (idx !== cur) { open(idx, true); }
+      }, { passive: true });
+      vp.addEventListener('touchend', function () { tch.at = Date.now(); }, { passive: true });
+      vp.addEventListener('touchcancel', function () { tch.at = Date.now(); tch.axis = ''; }, { passive: true });
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(function (es) { es.forEach(function (e) { inView = e.isIntersecting; if (inView) { play(); } else { stop(); } }); }, { threshold: 0.35 }).observe(deck);
       }

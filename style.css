@@ -171,7 +171,7 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
 .more i{font-style:normal}
 .more:hover,.more:focus-visible{background:var(--ink);color:var(--paper)}
 .more:hover .mi{opacity:.7}
-.deck__vp{position:relative;flex:1 1 auto;min-height:230px;overflow:hidden}
+.deck__vp{position:relative;flex:1 1 auto;min-height:230px;overflow:hidden;touch-action:pan-y}
 .deck__tr{position:absolute;inset:0;transform:translate3d(0,0,0);transition:transform var(--dur) var(--ease)}
 .card{position:absolute;left:0;top:0;height:100%;width:var(--w,320px);border-radius:14px 14px 0 0;overflow:hidden;
  background:var(--c,#eee);transform:translate3d(var(--x,0),0,0);transition:transform var(--dur) var(--ease);
@@ -575,6 +575,9 @@ a.mail:hover{opacity:.6}
  .card.is-open .card__t{display:block;position:absolute;left:0;bottom:0;z-index:3;background:var(--paper);color:var(--ink);padding:9px 11px 8px;
   font-size:14px;letter-spacing:-.01em;border-top:1px solid var(--hair);border-right:1px solid var(--hair)}
  .deckrow{border-bottom:0}
+ /* accueil : le bloc Les artistes sans cadre noir au telephone */
+ .wrap--deck .thead{border:0}
+ .wrap--deck .deckrow{border:0}
  .hero{min-height:0}
  .hero__f{padding:calc(var(--chrome) + 3vh) 7vw 3vh}
  .hero__b{flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:40px}
