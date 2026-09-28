@@ -53,6 +53,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
  transition:transform .55s var(--ease),opacity .45s var(--ease),background .3s var(--ease),color .3s var(--ease)}
 .bar.is-hid{transform:translateY(-100%);opacity:0;transition:transform .55s var(--ease),opacity .4s var(--ease) .05s,background .3s var(--ease),color .3s var(--ease)}
 .bar__w{font-size:19px;letter-spacing:-.025em;white-space:nowrap}
+@font-face{font-family:"Kormelink";src:url("fonts/kormelink-italic.woff2") format("woff2");font-style:italic;font-weight:400;font-display:swap}
+.bar__w{display:inline-flex;align-items:center;gap:.3em;line-height:1}
+.bar__logo{height:.95em;width:auto;fill:currentColor;display:block}
+.bar__x{font-family:"Kormelink","Helvetica Neue",Arial,sans-serif;font-style:italic;font-size:1.55em;letter-spacing:0;line-height:.8}
 .bar__n{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
 .bar__n a{font-size:var(--t5);letter-spacing:.06em;font-weight:400;opacity:.55;transition:opacity .2s;padding:6px 0}
 .bar__n a.on,.bar__n a:hover{opacity:1}
@@ -481,6 +485,8 @@ a.mail:hover{opacity:.6}
 .pj:hover .pj__im img{transform:scale(1.025)}
 .pj__t{display:block;margin-top:14px;font-weight:400;font-size:17px;line-height:1.45;letter-spacing:-.01em;text-wrap:pretty}
 .pj__t b{font-weight:700}
+.pj__s,.pj__t .mi{display:block}
+.pj__t .mi{margin-top:6px}
 .pj:hover .pj__t b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 /* page Artistes : la bande des noms descend jusqu'au filet noir du roster, sans blanc entre les deux */
 .roster .deck--page .caps{height:86px}
