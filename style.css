@@ -137,6 +137,7 @@ html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opa
 
 /* a la une : l'artiste a gauche avec trois pieces, les projets a droite avec les rubriques */
 .une{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:1px;background:var(--hair);border:var(--rule) solid var(--ink)}
+.une--solo{grid-template-columns:minmax(0,1fr)}
 .thead+.une{border-top:0}
 .une__a{display:grid;grid-template-columns:minmax(220px,1fr) minmax(0,2fr);gap:1px;background:var(--hair);min-width:0}
 .une__t{background:var(--paper);padding:22px 20px;display:flex;flex-direction:column;gap:10px;justify-content:center}
