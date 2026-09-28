@@ -400,8 +400,11 @@ a.mail:hover{opacity:.6}
 .slist{display:flex;flex-direction:column}
 .slist li{font-size:clamp(20px,2vw,28px);letter-spacing:-.025em;line-height:1.2;padding:14px 0;border-top:1px solid var(--hair2)}
 .slist li:first-child{border-top:0;padding-top:0}
-.slist--dir li{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
-.slist--dir span{font-weight:400;font-size:15px;letter-spacing:0;line-height:1.5;opacity:.75}
+.slist.slist--dir{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 32px;border-top:0}
+.slist--dir li{display:flex;flex-direction:column;gap:10px;border-bottom:0;border-top:1px solid var(--ink);padding:16px 0 0}
+.slist--dir li:first-child{border-top:1px solid var(--ink);padding-top:16px}
+.une__ph[hidden]{display:none}
+.slist--dir span{font-weight:400;font-size:clamp(15px,.8vw + 8px,18px);letter-spacing:0;line-height:1.5;opacity:.8}
 .slist--dir a:hover{text-decoration:underline;text-underline-offset:3px}
 .slist--team li{display:flex;flex-direction:column;gap:4px}
 .slist--team span{font-weight:400;font-size:15px;letter-spacing:0}
@@ -552,6 +555,7 @@ a.mail:hover{opacity:.6}
  .srow{grid-template-columns:1fr;gap:14px;padding:30px 0}
  .sheet{grid-template-columns:1fr}
  .deckrow{grid-template-columns:1fr}
+ .slist.slist--dir{grid-template-columns:1fr;gap:18px}
  .names--col{border-left:0;border-top:1px solid var(--hair);grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:1px;background:var(--hair)}
 }
 @media(max-width:760px){

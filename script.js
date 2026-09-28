@@ -278,6 +278,8 @@
         nm.textContent = ua.n; nm.href = 'a-' + ua.s; go2.href = 'a-' + ua.s;
         bio.textContent = ua.bio || (EN() ? 'Artist presentation to be written.' : 'Présentation de l\'artiste à écrire.');
         bio.classList.toggle('ph', !ua.bio);
+        var uph = document.getElementById('une-ph');
+        if (uph) { if (ua.ph) { uph.src = ua.ph; uph.alt = ua.n; uph.hidden = false; } else { uph.hidden = true; } }
         var ur = document.getElementById('une-r'), ul = document.getElementById('une-l'), up = document.getElementById('une-p');
         if (ur && ul) {
           var seen = {}, cats = [];
