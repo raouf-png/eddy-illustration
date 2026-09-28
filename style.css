@@ -456,8 +456,12 @@ a.mail:hover{opacity:.6}
 .mrow img{width:100%;height:auto;transition:transform .6s var(--ease)}
 .mrow .m:hover img{transform:scale(1.02)}
 .m--pj{position:relative;display:block}
-.m__cap{position:absolute;left:0;bottom:0;display:flex;flex-direction:column;gap:2px;background:var(--paper);padding:8px 12px 9px;border-top:1px solid var(--hair);border-right:1px solid var(--hair);max-width:90%}
-.m__cap b{font-size:14px;letter-spacing:-.01em}
+.m__cap{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:2px;background:var(--paper);padding:7px 10px 8px;max-width:calc(100% - 20px);box-shadow:0 0 0 1px var(--hair)}
+.m__cap b{font-size:13px;letter-spacing:-.01em;line-height:1.25}
+.m__cap .mi{font-size:9px}
+/* a la souris, la legende n'apparait qu'au survol ; au doigt elle reste, sinon le lien serait invisible */
+@media (hover:hover){.m__cap{opacity:0;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
+ .m--pj:hover .m__cap,.m--pj:focus-visible .m__cap{opacity:1;transform:none}}
 .m--pj:hover .m__cap b{text-decoration:underline;text-underline-offset:3px}
 
 /* ------------------------------------------------------- 9b. La page introuvable */
