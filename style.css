@@ -96,8 +96,8 @@ html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opa
 .hero.is-on .hero__im{opacity:1}
 .hero__b{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s5);padding:0 var(--gut) 26px}
 .hero__t{max-width:min(62ch,60%);z-index:2}
-.hero__t h1{font-size:clamp(30px,4.2vw,58px);letter-spacing:-.04em;line-height:.96}
-.hero__t p{font-weight:400;font-size:14px;line-height:1.6;margin-top:10px;opacity:.85}
+.hero__t h1{font-size:clamp(30px,4.2vw,58px);letter-spacing:-.04em;line-height:.96;text-wrap:balance}
+.hero__t p{font-weight:400;font-size:clamp(15px,.45vw + 10px,18px);line-height:1.5;margin-top:18px;max-width:44ch;opacity:.85;text-wrap:pretty}
 .hero__a{z-index:2;display:flex;flex-direction:column;gap:4px;flex:0 0 auto;
  align-items:flex-end;text-align:right}
 .hero__a b{font-size:15px;letter-spacing:-.01em}
@@ -173,6 +173,8 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
 .deckrow{display:grid;grid-template-columns:minmax(0,1fr) 290px;border:var(--rule) solid var(--ink);border-top:0;border-bottom:0}
 .deckrow__d{min-width:0;display:flex;flex-direction:column}
 .deckrow .caps{border-bottom:0}
+/* la barre des legendes fait exactement une rangee de la liste des noms : les filets se rejoignent */
+.deckrow .caps{height:calc(100% / var(--n,12));min-height:44px}
 .more{display:flex;justify-content:space-between;align-items:baseline;gap:14px;border:var(--rule) solid var(--ink);
  padding:12px 12px 13px;transition:background .2s,color .2s}
 .more b{font-size:15px;letter-spacing:-.01em}
@@ -492,8 +494,8 @@ a.mail:hover{opacity:.6}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px 44px;padding-bottom:20px}
 .pj{display:block;min-width:0}
 .pj[hidden]{display:none}
-.pj__im{display:block;aspect-ratio:3/2;background:var(--c,#eee);overflow:hidden}
-.pj__im img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.pj__im{display:flex;align-items:center;justify-content:center;aspect-ratio:3/2;padding:6%;background:var(--c,#eee);overflow:hidden}
+.pj__im img{max-width:100%;max-height:100%;width:auto;height:auto;box-shadow:0 18px 44px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.1);transition:transform .6s var(--ease)}
 .pj:hover .pj__im img{transform:scale(1.025)}
 .pj__t{display:block;margin-top:14px;font-weight:400;font-size:17px;line-height:1.45;letter-spacing:-.01em;text-wrap:pretty}
 .pj__t b{font-weight:700}
@@ -502,6 +504,8 @@ a.mail:hover{opacity:.6}
 .projet .sheet{margin-bottom:28px}
 .projet .sheet__t p{font-weight:400;font-size:clamp(16px,1.2vw + 5px,22px);line-height:1.55;max-width:none;text-wrap:pretty}
 .projet .sheet__t p.mi{font-size:11px;margin-top:10px}
+.projet .mosaic{border-top:var(--rule) solid var(--ink)}
+.pback{margin-top:8px}
 .pfilm{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:14px}
 .cell a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .pj__s,.pj__t .mi{display:block}
