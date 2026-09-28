@@ -282,7 +282,7 @@
         if (ur && ul) {
           var seen = {}, cats = [];
           (ua.pj || []).forEach(function (q) { if (!seen[q.r]) { seen[q.r] = 1; cats.push(q.r); } });
-          ur.innerHTML = cats.map(function (c) { return '<a class="rub" href="projects">' + tr(c) + '</a>'; }).join('');
+          ur.innerHTML = cats.map(function (c) { return '<a class="rub" href="projects">' + c + '</a>'; }).join('');
           ul.innerHTML = (ua.pj || []).map(function (q) { return '<li><a href="' + q.h.replace(/\.html$/, '') + '">' + q.t + '</a></li>'; }).join('');
           if (up) { up.hidden = !(ua.pj && ua.pj.length); }
         }
