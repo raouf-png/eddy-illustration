@@ -538,10 +538,6 @@ h1.big,.sheetp__h h1,.callout .big{text-wrap:balance}
 .projet .mosaic{border-top:var(--rule) solid var(--ink);background:var(--paper)}
 .projet .mrow{margin:0 auto;width:100%;gap:1px;background:var(--hair)}
 .projet .mrow+.mrow{border-top:1px solid var(--hair)}
-.mrow--fix{display:grid;gap:1px;background:var(--hair)}
-.mrow--fix .m--fit{display:flex;align-items:center;justify-content:center;background:var(--paper);min-height:0;overflow:hidden}
-.mrow--fix .m--fit img{width:100%;height:100%;object-fit:contain}
-@media (max-width:760px){.mrow--fix{grid-template-columns:1fr !important;aspect-ratio:auto !important}.mrow--fix .m--fit img{height:auto}}
 .pback{margin-top:8px}
 .pfilm{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:14px}
 .cell a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
