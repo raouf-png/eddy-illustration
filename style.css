@@ -507,12 +507,27 @@ a.mail:hover{opacity:.6}
 .pj:hover .pj__im img{transform:scale(1.025)}
 .pj__t{display:block;margin-top:14px;font-weight:400;font-size:17px;line-height:1.45;letter-spacing:-.01em;text-wrap:pretty}
 .pj__t b{font-weight:700}
+h1.big,.sheetp__h h1,.callout .big{text-wrap:balance}
+.nw{white-space:nowrap}
+.colo div>span,.colo div>a{display:block;font-weight:400;font-size:14px;line-height:1.6}
+@media (max-width:760px){
+ .thead>span:not(.c):not(.sort){display:none}
+ .thead{flex-wrap:nowrap}
+ #bar .bar__n a{padding:12px 0}
+ .lsw{min-height:40px;align-items:center}
+ .rub{padding:11px 12px 10px}
+ .go{padding:10px 0}
+ .sort button{padding:10px 4px}
+ .callout .mail{display:inline-block;padding:8px 0}
+}
 .pgrid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .pbig{margin-bottom:18px}
 .projet .sheet{margin-bottom:28px}
 .projet .sheet__t p{font-weight:400;font-size:clamp(16px,1.2vw + 5px,22px);line-height:1.55;max-width:none;text-wrap:pretty}
 .projet .sheet__t p.mi{font-size:11px;margin-top:10px}
-.projet .mosaic{border-top:var(--rule) solid var(--ink)}
+.projet .mosaic{border-top:var(--rule) solid var(--ink);background:var(--paper)}
+.projet .mrow{margin:0 auto;width:100%;gap:1px;background:var(--hair)}
+.projet .mrow+.mrow{border-top:1px solid var(--hair)}
 .pback{margin-top:8px}
 .pfilm{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:14px}
 .cell a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
