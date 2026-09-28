@@ -154,6 +154,11 @@ html.js.is-leaving main,html.js.is-leaving .colo,html.js.is-leaving .colo__b{opa
 .une__p{background:var(--paper);padding:22px 20px;display:flex;flex-direction:column;gap:14px;justify-content:center}
 .une__p p{font-weight:400;font-size:14px;line-height:1.7}
 .une__p .rubs{margin:0}
+.une__l{display:flex;flex-direction:column;border-top:1px solid var(--hair)}
+.une__l li{border-bottom:1px solid var(--hair)}
+.une__l a{display:block;padding:9px 0;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.une__l a:hover{text-decoration:underline;text-underline-offset:3px}
+.une__p[hidden]{display:none}
 .rub{border:1px solid var(--ink);border-radius:6px;padding:6px 10px 5px;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;
  transition:background .2s,color .2s}
 a.rub:hover{background:var(--ink);color:var(--paper)}
@@ -205,7 +210,7 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
 /* les treize noms : en colonne a cote du jeu, en grille ailleurs */
 .names{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--hair);
  border:var(--rule) solid var(--ink);border-top:0}
-.names--col{grid-template-columns:1fr;grid-template-rows:repeat(13,minmax(0,1fr));height:100%;gap:0;background:var(--paper);border:0;
+.names--col{grid-template-columns:1fr;grid-template-rows:repeat(var(--n,12),minmax(0,1fr));height:100%;gap:0;background:var(--paper);border:0;
  box-shadow:inset 1px 0 0 var(--hair);align-self:stretch}
 .names--col .nm{box-shadow:inset 0 -1px 0 var(--hair)}
 .names--col .nm:last-child{box-shadow:none}
@@ -218,6 +223,7 @@ a.rub:hover{background:var(--ink);color:var(--paper)}
 .nm b{font-size:15px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .names--col .nm{flex-direction:row;align-items:baseline;justify-content:space-between;gap:10px;min-height:0;padding:6px 12px 6px 16px}
 .names--col .nm b{flex:1 1 auto}
+.nm .mi:empty{display:none}
 
 /* le mur des artistes, page Artistes */
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:var(--rule) solid var(--ink);border-top:0}
@@ -488,6 +494,13 @@ a.mail:hover{opacity:.6}
 .pj:hover .pj__im img{transform:scale(1.025)}
 .pj__t{display:block;margin-top:14px;font-weight:400;font-size:17px;line-height:1.45;letter-spacing:-.01em;text-wrap:pretty}
 .pj__t b{font-weight:700}
+.pgrid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pbig{margin-bottom:18px}
+.projet .sheet{margin-bottom:28px}
+.projet .sheet__t p{font-weight:400;font-size:clamp(16px,1.2vw + 5px,22px);line-height:1.55;max-width:none;text-wrap:pretty}
+.projet .sheet__t p.mi{font-size:11px;margin-top:10px}
+.pfilm{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:14px}
+.cell a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .pj__s,.pj__t .mi{display:block}
 .pj__t .mi{margin-top:6px}
 .pj:hover .pj__t b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
@@ -522,7 +535,7 @@ a.mail:hover{opacity:.6}
 @media(max-width:1100px){
  :root{--gut:18px}
  .tiles{grid-template-columns:repeat(3,1fr)}
- .deckrow{grid-template-columns:minmax(0,1fr) 240px}
+ .deckrow{grid-template-columns:minmax(0,1fr) 260px}
  .une__a{grid-template-columns:1fr}
 }
 @media(max-width:860px){
