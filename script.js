@@ -164,7 +164,7 @@
         heroIm.srcset = a.set; heroIm.src = a.src; heroIm.width = a.w; heroIm.height = a.h; heroIm.alt = (EN() ? 'Illustration by ' : 'Illustration de ') + a.n;
         h.style.setProperty('--c', a.c); h.style.setProperty('--fg', a.fg);
         root.style.setProperty('--fg', a.fg); root.style.setProperty('--fgi', a.fg === '#fff' ? '#0d0d0d' : '#fff');
-        document.getElementById('hero-a').href = 'a-' + a.s + '.html'; document.getElementById('hero-n').textContent = a.n;
+        document.getElementById('hero-a').href = 'a-' + a.s; document.getElementById('hero-n').textContent = a.n;
         heroIm.addEventListener('load', function () { h.classList.add('is-on'); });
       } catch (e) {}
     }
@@ -221,7 +221,7 @@
         if (!pool.length) { pool = U; }
         var ua = pool[Math.floor(Math.random() * pool.length)];
         var nm = document.getElementById('une-n'), go2 = document.getElementById('une-go'), bio = document.getElementById('une-bio');
-        nm.textContent = ua.n; nm.href = 'a-' + ua.s + '.html'; go2.href = 'a-' + ua.s + '.html';
+        nm.textContent = ua.n; nm.href = 'a-' + ua.s; go2.href = 'a-' + ua.s;
         bio.textContent = ua.bio || (EN() ? 'Artist presentation to be written.' : 'Présentation de l\'artiste à écrire.');
         bio.classList.toggle('ph', !ua.bio);
         var picks = ua.p.slice().sort(function () { return Math.random() - 0.5; }).slice(0, 3);
@@ -230,7 +230,7 @@
           var im = f.querySelector('img');
           im.srcset = q.set; im.src = q.src; im.width = q.w; im.height = q.h; im.alt = (EN() ? 'Illustration by ' : 'Illustration de ') + ua.n;
           f.style.backgroundImage = 'linear-gradient(' + ua.tint + ',' + ua.tint + ')';
-          if (f.tagName === 'A') { f.href = 'a-' + ua.s + '.html'; f.setAttribute('aria-label', ua.n + (EN() ? ', discover the artist' : ', découvrir l\'artiste')); }
+          if (f.tagName === 'A') { f.href = 'a-' + ua.s; f.setAttribute('aria-label', ua.n + (EN() ? ', discover the artist' : ', découvrir l\'artiste')); }
         });
       } catch (e) {}
     }
